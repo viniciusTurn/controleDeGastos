@@ -15,6 +15,9 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('NOME', 100)->unique();
+            $table->integer('QUANTIDADE_EM_ESTOQUE');
+            $table->unsignedDecimal('PRECO_UNITARIO',  $precision = 8, $scale = 2);
             $table->timestamps();
         });
     }

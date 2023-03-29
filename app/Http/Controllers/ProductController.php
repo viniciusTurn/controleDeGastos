@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $params['name'] = "produtos";
+        return view('principal', $params);
     }
 
     /**
