@@ -26,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $params['name'] = "Cadastrar novo produto";
+        return view('cadastro', $params);
     }
 
     /**

@@ -1,11 +1,11 @@
 <header>
-    <div class="logo">
-        <img src="logo.png" alt="Meu Logo">
+    <div class="text-logo">
+        <h3>Venda de produtos</h3>
     </div>
     <nav>
         <ul class="menu-right">
-            <li><a href="/">Cadastro</a></li>
-            <li><a href="/produtos">Produtos</a></li>
+            <li><a href="products/cadastro">Cadastro</a></li>
+            <li><a href="products/">Produtos</a></li>
             <li><a href="/contato">Vender</a></li>
         </ul>
     </nav>

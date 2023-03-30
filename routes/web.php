@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 
 Route::get('products/', [App\Http\Controllers\ProductController::class, 'index']);
+Route::get('products/cadastro', [App\Http\Controllers\ProductController::class, 'create']);
