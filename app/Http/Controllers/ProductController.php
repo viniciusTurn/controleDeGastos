@@ -16,7 +16,9 @@ class ProductController extends Controller
     public function index()
     {
         $params['name'] = "produtos";
-        return view('principal', $params);
+        $products = Product::paginate(5);       
+        $params['produtos'] = $products;
+        return view('lista', $params);
     }
 
     /**
@@ -27,6 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         $params['name'] = "Cadastrar novo produto";
+        $params['produto'] = new Product();         
         return view('cadastro', $params);
     }
 
@@ -38,7 +41,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $produto = new Product();
+        $produto->NOME = $request->input('descricao');
+        $produto->QUANTIDADE_EM_ESTOQUE = $request->input('quantidade');
+        $produto->PRECO_UNITARIO = $request->input('preco');
+        $produto->save();  
+        return redirect()->to('/products/');
     }
 
     /**
@@ -59,8 +67,13 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
-    {
-        //
+    {        
+        if(!$product){
+            abort(404);
+        }        
+        $params['produto'] = $product;        
+        $params['name'] = "Editar produto";
+        return view('cadastro', $params);
     }
 
     /**
@@ -83,6 +96,18 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if(!$product){
+            abort(404);
+        }  
+        $product->delete();
+        return redirect()->route('products.index');
+    }
+    
+    public function listar()
+    {
+        $products = Product::all();
+        $params['name'] = "produtos";
+        $params['produtos'] = $products;
+        return view('lista', $params); 
     }
 }
