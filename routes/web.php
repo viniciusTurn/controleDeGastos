@@ -22,4 +22,5 @@ Route::get('/products/', [App\Http\Controllers\ProductController::class, 'index'
 Route::get('/products/cadastro', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
 Route::post('/products/salvar', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
 Route::get('/products/editar/{product}', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
+Route::post('/products/atualizar', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
 Route::get('/products/excluir/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');

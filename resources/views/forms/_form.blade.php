@@ -14,18 +14,15 @@
         <div class="row row-margin">
             <div class="col-xs-12 col-sm-6">
                 <label for="descricao">Descrição do produto*:</label>
-                <input type="text" class="form-control" maxlength="100" name="descricao" id="descricao" value="{{ old('descricao', $produto->NOME) }}"/>
+                <input type="text" class="form-control" maxlength="100" name="descricao" id="descricao" value="{{ $produto->NOME }}"/>
             </div>
             <div class="col-xs-12 col-sm-2">
                 <label for="quantidade">Quantidade do produto*:</label>               
-                <input type="number" class="form-control" min="1" name="quantidade" max="99999" id="quantidade" step="1" value="{{ old('quantidade', $produto->QUANTIDADE_EM_ESTOQUE) }}"/>
+                <input type="number" class="form-control" min="1" name="quantidade" max="99999" id="quantidade" step="1" value="{{ $produto->QUANTIDADE_EM_ESTOQUE }}"/>
             </div>  
             <div class="col-xs-12 col-sm-2">
                 <label for="preco">Preço do produto*:</label>               
-                <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input type="number" step="0.01" name="preco" placeholder="Digite o valor" class="form-control" value="{{ old('preco', $produto->PRECO_UNITARIO) }}">
-                </div>                
+                <input type="number" class="form-control" min="1" name="preco" id="preco" step="1" value="{{ $produto->PRECO_UNITARIO }}"/>
             </div>    
         </div>        
         <div class="form-group row-margin-2x">
@@ -36,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="row row-margin text-end">
+        <div class="row row-margin float-end">
             <div class="col-xs-12">                
                 <button type="submit" id="btnSalvar" class="btn btn-primary btn-block">
                     <i class="fa fa-floppy-o"></i> Salvar
@@ -46,20 +43,4 @@
         <input type="hidden" id="{{ $produto->id }}">
     </form>
 </div>
-@if($errors->any())
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="alert alert-danger" role="alert">
-                    <h4>Corrija os seguintes erros:</h4>
-                    <ul>
-                        @foreach($errors->all() as $erro)
-                            <li>{{ $erro }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-@endif
 @endsection
