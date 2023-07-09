@@ -21,9 +21,9 @@
                 <tbody>
                     @foreach($produtos as $item)
                         <tr>
-                            <td class='text-start'>{{ $item->NOME }}</td>
-                            <td class='text-end'>{{ $item->QUANTIDADE_EM_ESTOQUE }}</td>
-                            <td class='text-end'>{{ $item->PRECO_UNITARIO }}</td>
+                            <td class='text-start'>{{ $item->description }}</td>
+                            <td class='text-end'>{{ $item->amount }}</td>
+                            <td class='text-end'>{{ $item->unity_price }}</td>
                             <td class='text-center'>
                                 <a class="btn btn-primary" href="{{ route('products.edit', ['product' => $item->id]) }}">Editar</a>
                                 <a class="btn btn-danger" href="{{ route('products.destroy', ['product' => $item->id]) }}">Excluir</a>

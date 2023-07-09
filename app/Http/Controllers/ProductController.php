@@ -41,11 +41,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $produto = new Product();
-        $produto->NOME = $request->input('descricao');
-        $produto->QUANTIDADE_EM_ESTOQUE = $request->input('quantidade');
-        $produto->PRECO_UNITARIO = $request->input('preco');
-        $produto->save();  
+        $product = new Product();
+        $data = $request->all();
+        $product->fill($data); 
+        $product->action_code = 1;
+        $product->save();  
         return redirect()->to('/products/');
     }
 
@@ -73,20 +73,22 @@ class ProductController extends Controller
         }        
         $params['produto'] = $product;        
         $params['name'] = "Editar produto";
-        return view('cadastro', $params);
+        return view('edit', $params);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProductRequest  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Http\Requests\UpdateProductRequest  $request     
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request)
     {
-        $data = $request->all();
-        $product->fill($data);
+        $id = $request->input('productId');        
+        $product = Product::findOrFail($id);        
+        $product->description = $request->input('description');
+        $product->amount = $request->input('amount');
+        $product->unity_price = $request->input('unity_price');
         $product->save();
         return redirect()->route('products.index');
     }
@@ -104,13 +106,5 @@ class ProductController extends Controller
         }  
         $product->delete();
         return redirect()->route('products.index');
-    }
-    
-    public function listar()
-    {
-        $products = Product::all();
-        $params['name'] = "produtos";
-        $params['produtos'] = $products;
-        return view('lista', $params); 
-    }
+    }    
 }

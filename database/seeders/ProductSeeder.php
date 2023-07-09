@@ -13,6 +13,12 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Product::factory(10)->create();
+        $typeActions = \App\Models\TbTypeAction::all(); 
+            
+        \App\Models\Product::factory()->count(10)->create()->each(function ($product) use ($typeActions) {
+            $typeAction = $typeActions->random(); // Seleciona uma ação aleatória            
+            $product->action_code = $typeAction->id; // Atribui o ID da ação à coluna de chave estrangeira
+            $product->save();
+        });
     }
 }

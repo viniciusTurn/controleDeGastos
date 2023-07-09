@@ -24,9 +24,9 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' => 'required',
-            'quantidade' => 'required|integer',
-            'preco' => 'required|numeric'
+            'description' => 'required',
+            'amount' => 'required|integer',
+            'unity_price' => 'required|numeric'
         ];
     }
 }
