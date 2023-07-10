@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -22,11 +23,12 @@ class UpdateProductRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    {        
          return [
-            'description' => 'required',
-            'amount' => 'required|integer',
-            'unity_price' => 'required|numeric'
+            'description' => [
+                'required',
+                Rule::unique('products', 'description')->ignore($this->product)
+             ]
         ];
     }
 }

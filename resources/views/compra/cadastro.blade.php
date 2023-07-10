@@ -6,7 +6,7 @@
 
 <div class="container-fluid">    
     <form id="form" class="form-horizontal" action='/products/salvar' method="POST">  
-        @include('forms._form')
+        @include('forms._formCadastroProdutos')
     </form>
 </div>
 

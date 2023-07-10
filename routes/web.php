@@ -22,5 +22,12 @@ Route::get('/products/', [App\Http\Controllers\ProductController::class, 'index'
 Route::get('/products/cadastro', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
 Route::post('/products/salvar', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
 Route::get('/products/editar/{product}', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
-Route::post('/products/atualizar', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
+Route::put('/products/atualizar/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
 Route::get('/products/excluir/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+
+Route::get('/venda/', [App\Http\Controllers\VendaProductController::class, 'index'])->name('vendaProducts.index');
+Route::get('/venda/cadastro', [App\Http\Controllers\VendaProductController::class, 'create'])->name('vendaProducts.create');
+Route::post('/venda/salvar', [App\Http\Controllers\VendaProductController::class, 'store'])->name('vendaProducts.store');
+Route::get('/venda/editar/{product}', [App\Http\Controllers\VendaProductController::class, 'edit'])->name('vendaProducts.edit');
+Route::put('/venda/atualizar/{product}', [App\Http\Controllers\VendaProductController::class, 'update'])->name('vendaProducts.update');
+Route::get('/venda/excluir/{product}', [App\Http\Controllers\VendaProductController::class, 'destroy'])->name('vendaProducts.destroy');

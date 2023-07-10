@@ -4,9 +4,17 @@
     </div>
     <nav>
         <ul class="menu-right">
-            <li><a href="/products/cadastro">Cadastro</a></li>
-            <li><a href="/products/">Produtos</a></li>
-            <li><a href="/contato">Vender</a></li>
+            <li class="menu-item"><a href="/products/cadastro">Compras</a></li>
+            <li class="menu-item dropdown">
+                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Produtos
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/products/cadastro">Cadastro</a></li>
+                    <li><a class="dropdown-item" href="/products/">Listagem</a></li>                    
+                </ul>
+            </li>                      
+            <li class="menu-item"><a href="/venda/cadastro">Vendas</a></li>
         </ul>
     </nav>
 </header>
