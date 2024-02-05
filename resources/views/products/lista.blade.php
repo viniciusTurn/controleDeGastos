@@ -14,7 +14,7 @@
             <table class="table table-striped" id="tabelaProcedimentosDigitados">
                 <thead>
                     <th class='col text-start'>Produto</th>                    
-                    <th class="col btsAcao-2 text-center">Ação</th>
+                    <th class="col btsAcaoComTexto-2 text-center">Ação</th>
                 </thead>
                 <tbody>
                     @foreach($produtos as $item)

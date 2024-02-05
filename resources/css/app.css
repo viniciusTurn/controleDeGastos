@@ -1,7 +1,20 @@
 body {
-    margin: 0;
+    margin: 0;    
+}
+
+.divContent{
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 80px); /* Ajusta a altura mínima do conteúdo da página */
 }
 
 .row-margin{
     margin-bottom: 10px;
+}
+
+th.btsAcaoComTexto-2 {
+	width: 190px;
 }

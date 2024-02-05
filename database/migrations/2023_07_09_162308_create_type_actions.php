@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbTypeActions extends Migration
+class CreateTypeActions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTbTypeActions extends Migration
      */
     public function up()
     {
-        Schema::create('tb_type_actions', function (Blueprint $table) {
+        Schema::create('type_actions', function (Blueprint $table) {
             $table->char('id', 1)->primary();
             $table->string('description', 100)->unique();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTbTypeActions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_type_actions');
+        Schema::dropIfExists('type_actions');
     }
 }

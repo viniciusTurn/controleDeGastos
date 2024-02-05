@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class TbTypeActionSeeder extends Seeder
+class ProductsEntrySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class TbTypeActionSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\TbTypeAction::factory(3)->create();
+        //
     }
 }

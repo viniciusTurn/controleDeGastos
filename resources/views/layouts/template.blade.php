@@ -10,7 +10,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer type="module"></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,12 +25,14 @@
         @yield('css')
     </head>
     <body>
-        @include('layouts.header')
-
-        @yield('conteudo')
+        <div class="divContent">            
+            <div class="content-wrapper">
+                @include('layouts.header')
+                @yield('conteudo')
+            </div>
         
-        @include('layouts.footer')
-        
+            @include('layouts.footer')
+        </div>
         @yield('js')
     </body>
 </html>

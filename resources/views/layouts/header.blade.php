@@ -4,7 +4,15 @@
     </div>
     <nav>
         <ul class="menu-right">
-            <li class="menu-item"><a href="/products/cadastro">Compras</a></li>
+            <li class="menu-item dropdown">                
+                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Compras
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/compra/cadastro">Nova compra</a></li>
+                    <li><a class="dropdown-item" href="/compra/">Historico de compras</a></li>                    
+                </ul>
+            </li>
             <li class="menu-item dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Produtos

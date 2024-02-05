@@ -7,9 +7,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : vinicius
 */
 
-footer {    
+footer {       
     background-color: #333; /* cor de fundo do footer */
     color: #fff; /* cor do texto do footer */
     text-align: center;
     line-height: 60px; /* altura da linha */
+    margin-top: 20px;
 }
