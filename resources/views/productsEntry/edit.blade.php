@@ -14,3 +14,7 @@
 @include('gerais.alertError')
 
 @endsection
+
+@section('js')    
+<script src="{{ asset('js/entradaProdutos.js')}}"></script>
+@endsection

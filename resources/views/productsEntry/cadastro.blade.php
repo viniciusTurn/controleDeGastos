@@ -14,11 +14,6 @@
 
 @endsection
 
-@section('js')
-<!--    <script src="{{ asset('js/compra.js')}}" type="module"></script>-->
-    <script type="module">
-        import { hoje } from "../js/novo.js";        
-//         console.log(MyModule);
-//        console.log(MyModule.hoje);
-    </script>
+@section('js')    
+<script src="{{ asset('js/entradaProdutos.js')}}"></script>
 @endsection

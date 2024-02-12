@@ -100,5 +100,30 @@ class ProductController extends Controller
         }  
         $product->delete();
         return redirect()->route('products.index');
-    }    
+    }  
+    
+    public function listar(\Illuminate\Http\Request $request)
+    {      
+        $produtos = \DB::table('products')                
+                ->select('products.id', 'products.description')                
+                ->where('products.description', 'like', "%" . $request->parametro . '%') 
+                ->paginate(50);
+        
+        return $produtos;         
+    }
+    
+//    public function listarOutroJeito(\Illuminate\Http\Request $request)
+//    {      
+//        $perPage = 3; // Número de itens por página, ajuste conforme necessário
+//        $pageNumber = $request->page ?? 1; // Obtém o número da página do request, padrão é 1
+//
+//        $produtos = \DB::table('products')                
+//                ->select('products.id', 'products.description')                                
+//                ->where('products.description', 'like', "%" . $request->parametro . '%') 
+//                ->skip(($pageNumber - 1) * $perPage)
+//                ->take($perPage)
+//                ->get();
+//        return response()->json(['listaProdutos' => $produtos]);                          
+//    }
+    
 }

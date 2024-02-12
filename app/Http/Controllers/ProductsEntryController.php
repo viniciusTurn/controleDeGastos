@@ -15,9 +15,7 @@ class ProductsEntryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        \DB::enableQueryLog();
-
+    {        
         $params['name'] = "Histórico de compras";         
         $productsEntries = ProductsEntry::with('product')->paginate(5);                   
         $params['productsEntries'] = $productsEntries;           
@@ -29,8 +27,8 @@ class ProductsEntryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {        
+    public function create(\Illuminate\Http\Request $request)
+    {                
         $params['name'] = "Entrada de produto";
         $params['productsEntry'] = new ProductsEntry();         
         return view('productsEntry.cadastro', $params);
@@ -72,10 +70,10 @@ class ProductsEntryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(ProductsEntry $productsEntry)
-    {
+    {       
         if(!$productsEntry){
             abort(404);
-        }        
+        }          
         $params['productsEntry'] = $productsEntry;        
         $params['name'] = "Editar entrada de produto";
         return view('productsEntry.edit', $params);
@@ -110,5 +108,29 @@ class ProductsEntryController extends Controller
         }  
         $productsEntry->delete();
         return redirect()->route('productsEntry.index');
+    }
+    
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\ProductsEntry  $productsEntry
+     * @return \Illuminate\Http\Response
+     */
+    public function listarProdutosEmEstoque(\Illuminate\Http\Request $request)
+    {      
+        $perPage = 50; // Número de itens por página, ajuste conforme necessário
+        $pageNumber = $request->numeroPagina ?? 1; // Obtém o número da página do request, padrão é 1
+
+        $produtosEmEstoque = \DB::table('products_entries')
+                ->join('products', 'products.id', '=', 'products_entries.product_id')
+                ->select('products.id', 'products.description')
+                ->distinct()
+                ->where('products.description', 'like', "%" . $request->parametro . '%') 
+                ->skip(($pageNumber - 1) * $perPage)
+                ->take($perPage)
+                ->get();
+        return response()->json(['listaProdutos' => $produtosEmEstoque]);        
     }
 }

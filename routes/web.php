@@ -24,6 +24,7 @@ Route::post('/products/salvar', [App\Http\Controllers\ProductController::class, 
 Route::get('/products/editar/{product}', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/atualizar/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
 Route::get('/products/excluir/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products/listar', [App\Http\Controllers\ProductController::class, 'listar'])->name('products.listar');
 
 Route::get('/compra/', [App\Http\Controllers\ProductsEntryController::class, 'index'])->name('productsEntry.index');
 Route::get('/compra/cadastro', [App\Http\Controllers\ProductsEntryController::class, 'create'])->name('productsEntry.create');
@@ -31,6 +32,7 @@ Route::post('/compra/salvar', [App\Http\Controllers\ProductsEntryController::cla
 Route::get('/compra/editar/{productsEntry}', [App\Http\Controllers\ProductsEntryController::class, 'edit'])->name('productsEntry.edit');
 Route::put('/compra/atualizar/{productsEntry}', [App\Http\Controllers\ProductsEntryController::class, 'update'])->name('productsEntry.update');
 Route::get('/compra/excluir/{productsEntry}', [App\Http\Controllers\ProductsEntryController::class, 'destroy'])->name('productsEntry.destroy');
+Route::get('/compra/listarProdutosEmEstoque', [App\Http\Controllers\ProductsEntryController::class, 'listarProdutosEmEstoque'])->name('productsEntry.listarProdutosEmEstoque');
 
 Route::get('/venda/', [App\Http\Controllers\VendaProductController::class, 'index'])->name('vendaProducts.index');
 Route::get('/venda/cadastro', [App\Http\Controllers\VendaProductController::class, 'create'])->name('vendaProducts.create');

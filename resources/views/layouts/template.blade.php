@@ -9,8 +9,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer type="module"></script>
+      
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,11 +19,10 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         
         <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-       
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">       
         @yield('css')
     </head>
-    <body>
+    <body data-bs-no-jquery="true">
         <div class="divContent">            
             <div class="content-wrapper">
                 @include('layouts.header')
@@ -33,6 +31,8 @@
         
             @include('layouts.footer')
         </div>
+          <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" ></script>        
         @yield('js')
     </body>
 </html>

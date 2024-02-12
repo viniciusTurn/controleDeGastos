@@ -2,10 +2,20 @@
 <div class="row row-margin">
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
         <label for="product_id">Selecione o produto*:</label>
-        <select id="product_id" name="product_id" class="form-control">
-            <option value='1'>Teste</option>
-            <option value='2'>Mais 1 item</option>
+        <select id="product_id" name="product_id" class="form-control"> 
+            @if(!is_null(old('product_id')))
+                <option value="{{ old('product_id') }}" selected>{{ old('product_id_name') }}</option>
+            @elseif(!is_null($productsEntry->product_id))
+                <option value="{{ $productsEntry->product_id }}" selected>{{ $productsEntry->product->description }}</option>
+            @endif
         </select>
+        @if(!is_null(old('product_id')))
+            <input type="hidden" id="product_id_name" name="product_id_name" value="{{ old('product_id_name') }}">
+        @elseif(!is_null($productsEntry->product_id))
+            <input type="hidden" id="product_id_name" name="product_id_name" value="{{ $productsEntry->product->description }}">
+        @else
+            <input type="hidden" id="product_id_name" name="product_id_name">
+        @endif       
     </div>
     <div class="col-xs-12 col-sm-4 col-md-6 col-lg-2">
         <label for="quantity">Quantidade do produto*:</label>               
