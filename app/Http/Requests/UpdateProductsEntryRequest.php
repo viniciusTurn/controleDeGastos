@@ -25,8 +25,9 @@ class UpdateProductsEntryRequest extends FormRequest
     {
         return [
             'product_id' => "required",
-            'quantity' => "required",
-            'unity_price' => "required"
+            'quantity' => "integer|required",
+            'unity_price' => "required",
+            'data' => "date|required"
         ];
     }
     
@@ -35,7 +36,10 @@ class UpdateProductsEntryRequest extends FormRequest
         return [
             'product_id.required' => 'É necesário selecionar um produto.',
             'quantity.required' => 'O campo quantidade é obrigatório.',
+            'quantity.integer' => 'O campo quantidade deve ser um número inteiro.',
             'unity_price.required' => 'O campo preço do produto é obrigatório.',
+            'data.required' => 'O campo data é obrigatório.',
+            'data.date' => 'Deve ser informada uma data válida.',
         ];
     }
 }

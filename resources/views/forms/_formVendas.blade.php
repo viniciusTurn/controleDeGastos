@@ -1,6 +1,6 @@
 @csrf
 <div class="row row-margin">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-6 col-lg-10">
         <label for="product_id">Selecione o produto*:</label>
         <select id="product_id" name="product_id" class="form-control" style="width: 100%;"> 
             @if(!is_null(old('product_id')))
@@ -15,30 +15,37 @@
         <input type="hidden" id="product_id_name" name="product_id_name" value="{{ $productsEntry->product->description }}">
         @else
         <input type="hidden" id="product_id_name" name="product_id_name">
-        @endif       
+        @endif  
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-6 col-lg-2">
+    <div class="col-xs-12 col-sm-6 col-lg-2">
         <label for="quantity">Data da compra*:</label>               
         <input type="date" class="form-control" name="data" id="data" value="{{ old('data', $productsEntry->data) }}"/>
-    </div>  
-    <div class="col-xs-12 col-sm-4 col-md-6 col-lg-2">
+    </div>    
+</div>  
+<div class="row row-margin">
+    <div class="col-xs-12 col-sm-4">
         <label for="quantity">Quantidade do produto*:</label>               
         <input type="number" class="form-control" min="1" name="quantity" max="99999" id="quantity" step="1" value="{{ old('quantity', $productsEntry->quantity) }}"/>
-    </div>  
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-2">
+    </div> 
+    <div class="col-xs-12 col-sm-4">
         <label for="unity_price">Preço do produto*:</label>               
         <div class="input-group mb-3">
             <span class="input-group-text">R$</span>
             <input type="number" step="0.01" name="unity_price" id="unity_price" placeholder="Digite o valor" class="form-control" value="{{ old('unity_price', $productsEntry->unity_price) }}">
         </div>                
-    </div>     
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <label for="total">Total:</label>               
+        <div class="input-group mb-3">
+            <span class="input-group-text">R$</span>
+            <input type="number" step="0.01" id="total" class="form-control" value="{{ old('unity_price', $productsEntry->quantity * $productsEntry->unity_price) }}" disabled>
+        </div>                
+    </div> 
 </div> 
-<div class="row row-margin">
-    <div class="col-xs-12 col-sm-4 col-md-6 col-lg-2">  
-        <label>&nbsp;</label>   
-        <button type="submit" id="btnSalvar" class="btn btn-primary form-control">
+<div class="row row-margin float-end">
+    <div class="col-xs-12">                
+        <button type="submit" id="btnSalvar" class="btn btn-primary btn-block">
             <i class="fa fa-floppy-o"></i> Salvar
         </button>
-    </div>   
-</div> 
-
+    </div>
+</div>   

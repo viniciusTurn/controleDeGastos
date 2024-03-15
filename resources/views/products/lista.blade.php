@@ -21,8 +21,13 @@
                         <tr>
                             <td class='text-start'>{{ $item->description }}</td>                            
                             <td class='text-center'>
-                                <a class="btn btn-primary" href="{{ route('products.edit', ['product' => $item->id]) }}">Editar</a>
-                                <a class="btn btn-danger" href="{{ route('products.destroy', ['product' => $item->id]) }}">Excluir</a>
+                                <a class="btn btn-primary" href="{{ route('products.edit', ['product' => $item->id]) }}">Editar</a>                                
+                                <!-- Formulário para ação de exclusão -->
+                                <form action="{{ route('products.destroy', ['product' => $item->id]) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

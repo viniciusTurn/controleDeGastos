@@ -18,11 +18,16 @@ class CreateProductsEntriesTable extends Migration
             // OU
             //$table->string('id', 45)->primary();
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')
+                    ->onDelete('RESTRICT')
+                    ->onUpdate('CASCADE');
+            $table->date('data');
             $table->integer('quantity');
             $table->unsignedDecimal('unity_price',  $precision = 8, $scale = 2);            
             $table->char('action_code', 1);
-            $table->foreign('action_code')->references('id')->on('type_actions');
+            $table->foreign('action_code')->references('id')->on('type_actions')
+                ->onDelete('RESTRICT')
+                ->onUpdate('CASCADE');
             $table->timestamps();            
         });
     }

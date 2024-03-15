@@ -26,6 +26,11 @@
         <div class="divContent">            
             <div class="content-wrapper">
                 @include('layouts.header')
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 @yield('conteudo')
             </div>
         

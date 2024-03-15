@@ -5,12 +5,16 @@
 @include('gerais.title')
 
 <div class="container-fluid">    
-    <form id="form" class="form-horizontal" action='/products/atualizar' method="POST">  
-        @include('forms._form')
-        <input type="hidden" id="productId" name="productId" value="{{ $produto->id }}">
+    <form id="form" class="form-horizontal" action="{{ route('vendaProducts.update', ['productsEntry' => $productsEntry->id]) }}" method="POST">  
+        @method('PUT')
+        @include('forms._formVendas')        
     </form>
 </div>
 
 @include('gerais.alertError')
 
+@endsection
+
+@section('js')    
+    <script src="{{ asset('js/vendaProdutos.js')}}"></script>
 @endsection
