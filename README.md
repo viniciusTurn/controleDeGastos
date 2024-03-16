@@ -27,3 +27,4 @@ O Controle de Gastos é um aplicativo desenvolvido em Laravel para auxiliar no g
 - Execute as migrações do banco de dados: php artisan migrate
 - Inicie o servidor: php artisan serve
 - Acesse o aplicativo em seu navegador: http://localhost:8000
+
